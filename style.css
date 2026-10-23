@@ -726,3 +726,30 @@ body {
         scroll-behavior: auto !important;
     }
 }
+/* UNIVERSAL SCROLLBAR HIDE — DESKTOP + MOBILE */
+html,
+body,
+* {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+}
+
+/* Keep scrolling enabled */
+html {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+body {
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
