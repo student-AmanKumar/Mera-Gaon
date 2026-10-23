@@ -1038,38 +1038,177 @@
                 
                 
 
-                <div id="section3">
+              
 
-                    <h2 class="heading">A Glimpse Inside</h2>
+<div id="section3">
 
-                    <div class="content-wrapper">
+    <h2 class="heading">A Glimpse Inside</h2>
 
-                        <video width="500" height="auto"
-                            autoplay loop muted playsinline class="radius">
+    <div class="content-wrapper">
 
-                            <source src="imgs/video.mp4" type="video/mp4">
+        <div class="village-video">
+            <video
+                id="villageVideo"
+                width="500"
+                autoplay
+                loop
+                muted
+                playsinline
+                preload="metadata"
+                disablepictureinpicture
+                controlslist="nodownload noplaybackrate noremoteplayback"
+                class="radius">
 
-                        </video>
+                <source src="imgs/video.mp4" type="video/mp4">
+                Your browser does not support HTML5 video.
+            </video>
 
-                        <div class="content">
+            <button
+                type="button"
+                id="muteBtn"
+                class="mute-btn"
+                aria-label="Unmute video">
+                🔇
+            </button>
+        </div>
 
-                            <p>
-                                Every village has a story, and Bhamori Khurd
-                                has countless memories worth preserving.
-                                This digital space brings together the places,
-                                people, and traditions that make our village
-                                unique.
-                            </p>
+        <div class="content">
 
-                            <p>
-                                Take a step inside and explore our village
-                                archive, cultural stories, photographs,
-                                and everyday life — all in one place.
-                            </p>
+            <p>
+                Every village has a story, and Bhamori Khurd
+                has countless memories worth preserving.
+                This digital space brings together the places,
+                people, and traditions that make our village
+                unique.
+            </p>
 
-                        </div>
-                    </div>
-                </div>
+            <p>
+                Take a step inside and explore our village
+                archive, cultural stories, photographs,
+                and everyday life — all in one place.
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<style>
+#section3 .village-video {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    flex-shrink: 0;
+}
+
+#section3 .village-video video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+#section3 .mute-btn {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255,255,255,.5);
+    border-radius: 50%;
+    background: rgba(41,76,54,.9);
+    color: white;
+    font-size: 19px;
+    cursor: pointer;
+    transition: transform .2s ease;
+}
+
+#section3 .mute-btn:hover {
+    transform: scale(1.08);
+}
+
+@media (max-width: 600px) {
+    #section3 .village-video {
+        max-width: 100%;
+    }
+}
+#section3 .content-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+#section3 .village-video {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    flex-shrink: 0;
+}
+
+#section3 .village-video video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+#section3 .content {
+    flex: 1;
+    min-width: 0;
+}
+
+#section3 .mute-btn {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+}
+
+/* Tablet and mobile */
+@media (max-width: 768px) {
+    #section3 .content-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+    }
+
+    #section3 .village-video {
+        max-width: 100%;
+    }
+
+    #section3 .content {
+        width: 100%;
+    }
+}
+</style>
+
+<script>
+(() => {
+    const video = document.getElementById("villageVideo");
+    const muteBtn = document.getElementById("muteBtn");
+
+    if (!video || !muteBtn) return;
+
+    muteBtn.addEventListener("click", () => {
+        video.muted = !video.muted;
+
+        muteBtn.textContent = video.muted ? "🔇" : "🔊";
+        muteBtn.setAttribute(
+            "aria-label",
+            video.muted ? "Unmute video" : "Mute video"
+        );
+    });
+
+    // Start automatically and keep looping
+    video.play().catch(() => {
+        // Some browsers may require another user interaction.
+    });
+})();
+</script>
+
 
                 <div id="section4">
 
