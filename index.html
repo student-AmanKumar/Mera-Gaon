@@ -2715,7 +2715,7 @@
     </div>
 
     <div class="footer-location">
-        <span class="location-icon">⌖</span>
+        <span class="location-icon"><i class="fa-solid fa-location-dot"></i></span>
         <span>Bhamori Khurd, Aligarh, Uttar Pradesh</span>
     </div>
 
@@ -3266,6 +3266,258 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
 
     <script src="script.js"></script>
+
+
+<!-- Floating Enter My Village Button -->
+<a href="https://student-amankumar.github.io/Mera-Gaon-Soon/"
+   class="mg-floating-entry"
+   aria-label="Enter My Village"
+   target="_blank"
+   rel="noopener noreferrer">
+
+    <span class="mg-floating-entry-icon">
+    <img src="imgs/connect.png" alt="Mera Gaon Logo">
+</span>
+
+    <span class="mg-floating-entry-label">Enter My Village </span>
+    <span class="mg-floating-entry-arrow">
+    <img src="imgs/enter.png" alt="Village Logo" style="background-color: #f7fffa;">
+</span>
+
+</a>
+
+
+<style>
+/* ===== MERA GAON — FLOATING ENTRY BUTTON ===== */
+
+.mg-floating-entry {
+    position: fixed;
+    right: 20px;
+    bottom: 55px;
+    z-index: 99999;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    box-sizing: border-box;
+    max-width: calc(100vw - 24px);
+    min-height: 48px;
+    padding: 6px 8px 6px 7px;
+
+    color: #fffdf5;
+    background: #294c36;
+    border: 1px solid #c5a45c;
+    border-radius: 50px;
+
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .15px;
+    text-decoration: none;
+    white-space: nowrap;
+
+    box-shadow: 0 5px 20px rgba(32, 65, 43, .2);
+    -webkit-tap-highlight-color: transparent;
+
+    animation: mgEntryFloat 3s ease-in-out infinite;
+    transition: background .25s ease,
+                box-shadow .25s ease,
+                transform .25s ease;
+}
+
+.mg-floating-entry * {
+    box-sizing: border-box;
+}
+
+.mg-floating-entry-icon {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+
+    color: #294c36;
+    background: #e4c987;
+    border-radius: 50%;
+    font-size: 14px;
+}
+
+.mg-floating-entry-label {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mg-floating-entry-arrow {
+    display: grid;
+    place-items: center;
+    width: 25px;
+    height: 25px;
+    flex: 0 0 25px;
+
+    color: #f4dfae;
+    border: 1px solid rgba(244, 223, 174, .4);
+    border-radius: 50%;
+    font-size: 14px;
+
+    transition: transform .25s ease;
+}
+
+/* Floating animation */
+@keyframes mgEntryFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+/* Desktop hover */
+@media (hover: hover) and (pointer: fine) {
+    .mg-floating-entry:hover {
+        background: #355e41;
+        box-shadow: 0 8px 25px rgba(32, 65, 43, .28);
+    }
+
+    .mg-floating-entry:hover .mg-floating-entry-arrow {
+        transform: translate(2px, -2px);
+    }
+}
+
+.mg-floating-entry:active {
+    transform: scale(.96);
+}
+
+.mg-floating-entry:focus-visible {
+    outline: 3px solid #c5a45c;
+    outline-offset: 4px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .mg-floating-entry {
+        right: 12px;
+        bottom: 35px;
+        gap: 7px;
+        min-height: 43px;
+        padding: 5px 7px 5px 6px;
+        font-size: 11px;
+    }
+
+    .mg-floating-entry-icon {
+        width: 31px;
+        height: 31px;
+        flex: 0 0 31px;
+        font-size: 13px;
+    }
+
+    .mg-floating-entry-arrow {
+        width: 22px;
+        height: 22px;
+        flex: 0 0 22px;
+        font-size: 12px;
+    }
+}
+
+/* Very small phones */
+@media (max-width: 350px) {
+    .mg-floating-entry {
+        right: 8px;
+        bottom: 30px;
+        gap: 6px;
+        font-size: 10px;
+    }
+
+    .mg-floating-entry-label {
+        max-width: 125px;
+    }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .mg-floating-entry {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Inline logo — desktop + mobile */
+.mg-floating-entry-icon {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    overflow: hidden;
+    border-radius: 50%;
+    background: #e4c987;
+}
+
+.mg-floating-entry-icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    padding: 3px;
+    border-radius: 50%;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .mg-floating-entry-icon {
+        width: 31px;
+        height: 31px;
+        flex: 0 0 31px;
+    }
+
+    .mg-floating-entry-icon img {
+        padding: 2px;
+    }
+}
+
+/* Tiny village logo inside the floating button arrow */
+.mg-floating-entry-arrow {
+    display: grid;
+    place-items: center;
+    width: 25px;
+    height: 25px;
+    flex: 0 0 25px;
+    overflow: hidden;
+    box-sizing: border-box;
+    border-radius: 50%;
+}
+
+/* Logo stays within the original heart size */
+.mg-floating-entry-arrow img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    padding: 2px;
+    box-sizing: border-box;
+    border-radius: 50%;
+}
+
+/* Mobile: keep the existing smaller size */
+@media (max-width: 600px) {
+    .mg-floating-entry-arrow {
+        width: 22px;
+        height: 22px;
+        flex: 0 0 22px;
+    }
+
+    .mg-floating-entry-arrow img {
+        padding: 1px;
+    }
+}
+</style>
+
 
 </body>
 <script>
