@@ -1,0 +1,728 @@
+/* variables */
+:root {
+    --bg-color: #F5ECE4;
+    --primary-color: #734425;
+    --secondary-color: #C26819;
+    --black: #2E2E2E;
+    --heading-font: "Outfit", sans-serif;
+}
+
+/* global properties */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--black);
+    font-family: "DM Sans", sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.btn {
+    color: #fff;
+    padding: 8px 20px;
+    font-weight: 500;
+}
+
+.radius {
+    border-radius: 10px;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+img {
+    width: 100%;
+}
+
+.w-full {
+    width: calc(100% - 80px);
+    max-width: 1440px;
+    margin: auto;
+}
+
+/* for all headings */
+.heading {
+    font-family: var(--heading-font);
+    font-weight: 700;
+    font-size: 6.5vw;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    line-height: 0.95;
+    margin-bottom: 1.4rem;
+}
+
+/* local Properties */
+header {
+    padding: 0.4rem 0;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    z-index: 1000;
+
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+header .logo {
+    max-width: 132px;
+    margin: 20px;
+    z-index: 1000;
+}
+
+header .btn {
+    background-color: var(--secondary-color);
+    margin: 30px;
+}
+
+#main {
+    overflow: hidden;
+}
+
+#headphones {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 2.2%;
+    width: 50vw;
+    max-width: 660px;
+    filter: drop-shadow(8px 35px 6px #00000025);
+    will-change: transform;
+    z-index: 9;
+}
+
+.section1 {
+    height: 100vh;
+    width: 60vw;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.section1 h1 {
+    font-size: 11.5vw;
+    line-height: 0.85;
+    margin-bottom: 0;
+}
+
+#section2 {
+    min-height: 100vh;
+    padding-top: 4vw;
+
+}
+
+#section2 .btn {
+    background-color: var(--black);
+    margin-top: 1.5rem;
+}
+
+#section2 .content-wrapper {
+    max-width: 500px;
+}
+
+
+.features-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.8rem;
+    width: 100%;
+    margin-top: 4rem;
+}
+
+.feature-wrapper {
+    min-width: 0;
+}
+
+.feature-box {
+    height: 100%;
+    border: 2px solid var(--black);
+    padding: 1.2rem 1.4rem;
+}
+
+.feature-name {
+    font-family: var(--heading-font);
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+}
+
+#section3 {
+    min-height: 100vh;
+    padding-top: 4vw;
+    padding-bottom: 4vw;
+}
+
+#section3 .heading {
+    font-size: clamp(2rem, 12.5vw, 13.5rem);
+    text-align: center;
+    text-wrap: balance;
+    margin-bottom: 3vw;
+}
+
+#section3 video {
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 0 30px #73442536;
+}
+
+#section3 .content {
+    max-width: 500px;
+    margin-left: auto;
+}
+
+#section3 p {
+    margin-top: 1rem;
+}
+
+#section4 {
+    min-height: 100vh;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+#section4 img {
+    border: 10px solid #fff;
+    box-shadow: 0 0 32px #73442536;
+    position: absolute;
+}
+
+#section4 .img1 {
+    max-width: 260px;
+    top: 12%;
+    left: 3%;
+    transform: rotate(15deg);
+}
+
+#section4 .img2 {
+    max-width: 400px;
+    right: 4%;
+    top: 22%;
+    transform: rotate(14deg);
+}
+
+#section4 .img3 {
+    max-width: 340px;
+    left: 10%;
+    bottom: 12%;
+    transform: rotate(-12deg);
+}
+
+#section5 {
+    text-align: center;
+    padding-top: 4vw;
+    padding-bottom: 8vw;
+    min-height: 94vh;
+}
+
+#section5 .product-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 3rem;
+}
+
+#section5 img {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(6px 15px 5px #00000018);
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+}
+
+.product .name {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.product .price {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+#section6 {
+    min-height: 100vh;
+    display: flex;
+    align-items: start;
+    gap: 5vw;
+    padding-bottom: 8vw;
+}
+
+#section6 img {
+    box-shadow: 0 0 30px #73442536;
+    width: 50%;
+    height: auto;
+}
+
+#section6 p {
+    margin-bottom: 1rem;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    border-top: 2px solid var(--primary-color);
+}
+
+footer .logo {
+    max-width: 132px;
+}
+
+footer .social {
+    display: flex;
+    align-items: center;
+}
+
+.social img {
+    width: 45px;
+    height: 45px;
+}
+
+#headphones {
+    width: 50%;
+    max-width: 550px;
+    height: auto;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+    #headphones {
+        width: 70%;
+        max-width: 350px;
+    }
+}
+
+/* ================================
+   TABLET RESPONSIVE
+================================ */
+@media (min-width: 601px) and (max-width: 990px) {
+
+    .w-full {
+        width: calc(100% - 40px);
+    }
+
+    .heading {
+        font-size: clamp(2.5rem, 7vw, 5rem);
+    }
+
+    .section1 {
+        width: 85%;
+    }
+
+    .section1 h1 {
+        font-size: 10vw;
+    }
+
+    #section2 .content-wrapper {
+        max-width: 55%;
+    }
+
+    .features-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 15px;
+    }
+
+    #section3 .content-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    #section3 .content {
+        max-width: 100%;
+        margin-left: 0;
+    }
+
+    #section4 {
+        min-height: 650px;
+    }
+
+    #section4 .img1 {
+        width: 30%;
+    }
+
+    #section4 .img2 {
+        width: 40%;
+    }
+
+    #section4 .img3 {
+        width: 35%;
+    }
+
+    #section5 .product-section {
+        gap: 15px;
+    }
+
+    #section5 img {
+        max-width: 220px;
+    }
+
+    .product .name,
+    .product .price {
+        font-size: 20px;
+    }
+
+    #section6 {
+        align-items: center;
+        gap: 25px;
+    }
+
+    #section6 img {
+        width: 45%;
+    }
+}
+
+
+/* ================================
+   MOBILE RESPONSIVE
+================================ */
+@media (max-width: 600px) {
+
+    body {
+        font-size: 16px;
+    }
+
+    .w-full {
+        width: calc(100% - 30px);
+    }
+
+    header {
+        width: 100%;
+        padding: 10px 15px;
+    }
+
+    header .logo {
+        width: 85px;
+        margin: 0;
+    }
+
+    header .btn {
+        margin: 0;
+        padding: 7px 14px;
+        font-size: 14px;
+    }
+
+    .heading {
+        font-size: 11vw;
+        line-height: 1;
+    }
+
+    .section1 {
+        width: 100%;
+        height: 85vh;
+    }
+
+    .section1 h1 {
+        font-size: 13vw;
+        overflow-wrap: anywhere;
+    }
+
+    #section2 {
+        min-height: auto;
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #section2 .content-wrapper {
+        max-width: 100%;
+    }
+
+    .features-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin-top: 30px;
+    }
+
+    .feature-box {
+        padding: 18px;
+    }
+
+    .feature-name {
+        font-size: 1.2rem;
+    }
+
+    #section3 {
+        min-height: auto;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    #section3 .heading {
+        font-size: 14vw;
+        margin-bottom: 25px;
+    }
+
+    #section3 .content-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    #section3 video {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    #section3 .content {
+        max-width: 100%;
+        margin-left: 0;
+    }
+
+    #section4 {
+        min-height: 450px;
+        margin-bottom: 30px;
+    }
+
+    #section4 img {
+        border-width: 5px;
+    }
+
+    #section4 .img1 {
+        width: 42%;
+        left: 2%;
+        top: 8%;
+    }
+
+    #section4 .img2 {
+        width: 55%;
+        right: 0;
+        top: 24%;
+    }
+
+    #section4 .img3 {
+        width: 45%;
+        left: 8%;
+        bottom: 8%;
+    }
+
+    #section5 {
+        min-height: auto;
+        padding-top: 40px;
+        padding-bottom: 60px;
+    }
+
+    #section5 .product-section {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin-top: 25px;
+    }
+
+    #section5 img {
+        width: 100%;
+        max-width: 230px;
+        margin-bottom: 15px;
+    }
+
+    .product .name,
+    .product .price {
+        font-size: 20px;
+    }
+
+    #section6 {
+        min-height: auto;
+        flex-direction: column;
+        gap: 25px;
+        padding-bottom: 50px;
+    }
+
+    #section6 img {
+        width: 100%;
+    }
+
+    #section6 .content-wrapper {
+        width: 100%;
+    }
+
+    footer {
+        gap: 15px;
+        padding: 20px 0;
+    }
+
+    footer .logo {
+        width: 100px;
+    }
+
+    .social img {
+        width: 30px;
+        height: 30px;
+    }
+}
+@media (max-width: 990px) {
+    #headphones {
+        position: absolute;
+        top: 15%;
+        left: 50%;
+        width: 75vw;
+        max-width: 400px;
+        height: auto;
+        object-fit: contain;
+        z-index: 9;
+    }
+}
+
+/* ==========================================
+   MOBILE HERO + HEADPHONES FIX
+========================================== */
+
+@media (max-width: 600px) {
+
+    #main {
+        overflow: clip;
+    }
+
+    .section1 {
+        position: relative;
+        width: 100%;
+        height: 100svh;
+        min-height: 620px;
+        padding: 0 15px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .section1 .heading {
+        position: relative;
+        z-index: 10;
+        margin-top: 24svh;
+        margin-bottom: 0;
+        font-size: 13vw;
+        line-height: 0.9;
+    }
+
+    #headphones {
+        position: absolute !important;
+        top: 47svh !important;
+        left: 50% !important;
+        right: auto !important;
+        bottom: auto !important;
+        width: 62vw !important;
+        max-width: 260px !important;
+        height: auto !important;
+        object-fit: contain;
+        transform: translateX(-50%);
+        transform-origin: center center;
+        opacity: 1;
+        visibility: visible;
+        z-index: 11;
+        pointer-events: none;
+    }
+}
+
+@media (max-width: 360px) {
+    .section1 {
+        min-height: 580px;
+    }
+
+    .section1 .heading {
+        font-size: 12.5vw;
+    }
+
+    #headphones {
+        width: 58vw !important;
+        max-width: 220px !important;
+    }
+}
+
+/* ==========================================
+   MERA GAON — MOBILE + DESKTOP PROTECTION
+========================================== */
+
+/* Avoid blue tap flash and selection on non-input UI */
+html {
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    -webkit-touch-callout: none;
+}
+
+/* Disable selection for general page content */
+body,
+body img,
+body svg,
+body video,
+body i,
+body .gc-village-btn,
+body .gc-social-links a {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Keep form fields fully usable */
+input,
+textarea,
+select,
+[contenteditable="true"],
+[contenteditable="true"] * {
+    -webkit-user-select: text !important;
+    user-select: text !important;
+    -webkit-touch-callout: default;
+}
+
+/* Keep buttons and links responsive */
+button,
+a,
+input,
+textarea,
+select,
+label,
+summary,
+[role="button"] {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+/* Images should not start accidental drag */
+img {
+    -webkit-user-drag: none;
+}
+
+/* Keep keyboard focus visible and accessible */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 2px solid #b89456;
+    outline-offset: 3px;
+}
+
+/* Don't interfere with normal page scrolling */
+html,
+body {
+    touch-action: pan-x pan-y;
+}
+
+/* Respect reduced-motion settings */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+    }
+}
