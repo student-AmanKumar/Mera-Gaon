@@ -1173,6 +1173,7 @@
 }
 </style>
 
+
 <script>
 (() => {
     const video = document.getElementById("villageVideo");
@@ -1181,43 +1182,46 @@
     if (!video || !muteBtn || muteBtn.dataset.initialized) return;
     muteBtn.dataset.initialized = "true";
 
-    function updateMuteButton() {
+    function updateButton() {
         muteBtn.textContent = video.muted ? "🔇" : "🔊";
         muteBtn.setAttribute(
             "aria-label",
             video.muted ? "Unmute video" : "Mute video"
         );
-        muteBtn.setAttribute("aria-pressed", String(video.muted));
+        muteBtn.setAttribute("aria-pressed", String(!video.muted));
     }
 
+    // Autoplay starts muted for mobile compatibility.
+    video.muted = true;
+    video.defaultMuted = true;
+    updateButton();
+
+    // Enable sound directly from the user's tap.
     muteBtn.addEventListener("click", async () => {
         if (video.muted) {
-            // User interaction allows the browser to enable audio.
             video.muted = false;
             video.volume = 1;
-
-            try {
-                await video.play();
-            } catch (error) {
-                // Keep audio enabled; show the current state.
-            }
         } else {
             video.muted = true;
         }
 
-        updateMuteButton();
+        updateButton();
+
+        try {
+            if (video.paused) {
+                await video.play();
+            }
+        } catch (error) {
+            console.warn("Playback needs user interaction.", error);
+        }
     });
 
-    // Keep the button synchronized with the actual audio state.
-    video.addEventListener("volumechange", updateMuteButton);
+    video.addEventListener("volumechange", updateButton);
 
-    // Start muted so autoplay can work on mobile browsers.
-    video.muted = true;
-    updateMuteButton();
-
+    // Attempt automatic playback.
     const startVideo = () => {
         video.play().catch(() => {
-            // Some browsers may require another user interaction.
+            // Browser may block autoplay.
         });
     };
 
