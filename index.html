@@ -1049,11 +1049,11 @@
         <div class="village-video">
             <video
                 id="villageVideo"
-                width="500"
                 autoplay
                 loop
                 muted
                 playsinline
+                webkit-playsinline
                 preload="metadata"
                 disablepictureinpicture
                 controlslist="nodownload noplaybackrate noremoteplayback"
@@ -1067,13 +1067,13 @@
                 type="button"
                 id="muteBtn"
                 class="mute-btn"
-                aria-label="Unmute video">
+                aria-label="Unmute video"
+                aria-pressed="true">
                 🔇
             </button>
         </div>
 
         <div class="content">
-
             <p>
                 Every village has a story, and Bhamori Khurd
                 has countless memories worth preserving.
@@ -1087,53 +1087,12 @@
                 archive, cultural stories, photographs,
                 and everyday life — all in one place.
             </p>
-
         </div>
+
     </div>
 </div>
 
 <style>
-#section3 .village-video {
-    position: relative;
-    width: 100%;
-    max-width: 500px;
-    flex-shrink: 0;
-}
-
-#section3 .village-video video {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-}
-
-#section3 .mute-btn {
-    position: absolute;
-    right: 14px;
-    bottom: 14px;
-    width: 42px;
-    height: 42px;
-    display: grid;
-    place-items: center;
-    border: 1px solid rgba(255,255,255,.5);
-    border-radius: 50%;
-    background: rgba(41,76,54,.9);
-    color: white;
-    font-size: 19px;
-    cursor: pointer;
-    transition: transform .2s ease;
-}
-
-#section3 .mute-btn:hover {
-    transform: scale(1.08);
-}
-
-@media (max-width: 600px) {
-    #section3 .village-video {
-        max-width: 100%;
-    }
-}
 #section3 .content-wrapper {
     display: flex;
     align-items: center;
@@ -1144,7 +1103,8 @@
     position: relative;
     width: 100%;
     max-width: 500px;
-    flex-shrink: 0;
+    flex: 0 1 500px;
+    min-width: 0;
 }
 
 #section3 .village-video video {
@@ -1165,9 +1125,30 @@
     position: absolute;
     right: 12px;
     bottom: 12px;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255,255,255,.55);
+    border-radius: 50%;
+    background: rgba(41,76,54,.92);
+    color: #fff;
+    font-size: 19px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform .2s ease, background .2s ease;
 }
 
-/* Tablet and mobile */
+#section3 .mute-btn:hover {
+    transform: scale(1.07);
+    background: #294c36;
+}
+
+#section3 .mute-btn:focus-visible {
+    outline: 2px solid #d5b477;
+    outline-offset: 3px;
+}
+
 @media (max-width: 768px) {
     #section3 .content-wrapper {
         flex-direction: column;
@@ -1177,10 +1158,17 @@
 
     #section3 .village-video {
         max-width: 100%;
+        flex: 0 0 auto;
     }
 
     #section3 .content {
         width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #section3 .mute-btn {
+        transition: none;
     }
 }
 </style>
@@ -1190,22 +1178,54 @@
     const video = document.getElementById("villageVideo");
     const muteBtn = document.getElementById("muteBtn");
 
-    if (!video || !muteBtn) return;
+    if (!video || !muteBtn || muteBtn.dataset.initialized) return;
+    muteBtn.dataset.initialized = "true";
 
-    muteBtn.addEventListener("click", () => {
-        video.muted = !video.muted;
-
+    function updateMuteButton() {
         muteBtn.textContent = video.muted ? "🔇" : "🔊";
         muteBtn.setAttribute(
             "aria-label",
             video.muted ? "Unmute video" : "Mute video"
         );
+        muteBtn.setAttribute("aria-pressed", String(video.muted));
+    }
+
+    muteBtn.addEventListener("click", async () => {
+        if (video.muted) {
+            // User interaction allows the browser to enable audio.
+            video.muted = false;
+            video.volume = 1;
+
+            try {
+                await video.play();
+            } catch (error) {
+                // Keep audio enabled; show the current state.
+            }
+        } else {
+            video.muted = true;
+        }
+
+        updateMuteButton();
     });
 
-    // Start automatically and keep looping
-    video.play().catch(() => {
-        // Some browsers may require another user interaction.
-    });
+    // Keep the button synchronized with the actual audio state.
+    video.addEventListener("volumechange", updateMuteButton);
+
+    // Start muted so autoplay can work on mobile browsers.
+    video.muted = true;
+    updateMuteButton();
+
+    const startVideo = () => {
+        video.play().catch(() => {
+            // Some browsers may require another user interaction.
+        });
+    };
+
+    if (document.readyState === "complete") {
+        startVideo();
+    } else {
+        window.addEventListener("load", startVideo, { once: true });
+    }
 })();
 </script>
 
